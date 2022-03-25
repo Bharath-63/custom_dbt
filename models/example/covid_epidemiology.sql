@@ -59,19 +59,3 @@ create or replace view "BHARATH_DB"."MY_DB_SCHEMA"."COVID_EPIDEMOLOGY_STATS_" as
     from cte
     where row_num = 1
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-gi
