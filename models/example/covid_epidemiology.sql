@@ -1,4 +1,4 @@
- create table "BHARATH_DB"."NEW_SCHEMA"."COVID_EPIDEMOLOGY_STATS_"  as
+ create or replace table "BHARATH_DB"."MY_DB_SCHEMA"."COVID_EPIDEMOLOGY_STATS_"  as
       as (
     select
         _airbyte_emitted_at,
@@ -16,7 +16,7 @@
         cast(jsonb_extract_path_text("_airbyte_data",'total_recovered') as float) as total_recovered
     from "BHARATH_DB".PUBLIC._AIRBYTE_RAW_COVID_EPIDEMOLOGY as table_alias
 ),
-create view "BHARATH_DB"."NEW_SCHEMA"."COVID_EPIDEMOLOGY_STATS_" as (
+create or replace view "BHARATH_DB"."MY_DB_SCHEMA"."COVID_EPIDEMOLOGY_STATS_" as (
     with parse_json_cte as (
         select
             _airbyte_emitted_at,
