@@ -1,4 +1,4 @@
- create table "AIR"."AIRBYTE_SCHEMA"."COVID_EPIDEMOLOGY"  as
+ create table "BHARATH_DB"."NEW_SCHEMA"."COVID_EPIDEMOLOGY_STATS_"  as
       as (
     select
         _airbyte_emitted_at,
@@ -14,10 +14,9 @@
         cast(jsonb_extract_path_text("_airbyte_data",'total_deceased') as float) as total_deceased,
         cast(jsonb_extract_path_text("_airbyte_data",'total_confirmed') as float) as total_confirmed,
         cast(jsonb_extract_path_text("_airbyte_data",'total_recovered') as float) as total_recovered
-
-from "AIR".AIRBYTE_SCHEMA._AIRBYTE_RAW_COVID_EPIDEMOLOGY as table_alias
+    from "BHARATH_DB".PUBLIC._AIRBYTE_RAW_COVID_EPIDEMOLOGY as table_alias
 ),
-create view "AIR"."AIRBYTE_SCHEMA"."COVID_EPIDEMOLOGY" as (
+create view "BHARATH_DB"."NEW_SCHEMA"."COVID_EPIDEMOLOGY_STATS_" as (
     with parse_json_cte as (
         select
             _airbyte_emitted_at,
@@ -32,8 +31,9 @@ create view "AIR"."AIRBYTE_SCHEMA"."COVID_EPIDEMOLOGY" as (
             cast(jsonb_extract_path_text("_airbyte_data",'total_deceased') as float) as total_deceased,
             cast(jsonb_extract_path_text("_airbyte_data",'total_confirmed') as float) as total_confirmed,
             cast(jsonb_extract_path_text("_airbyte_data",'total_recovered') as float) as total_recovered
-        from "AIR".AIRBYTE_SCHEMA._AIRBYTE_RAW_COVID_EPIDEMOLOGY
-    ),
+
+        from "BHARATH_DB".PUBLIC._AIRBYTE_RAW_COVID_EPIDEMOLOGY
+),
     cte as (
         select
             *,
@@ -59,3 +59,18 @@ create view "AIR"."AIRBYTE_SCHEMA"."COVID_EPIDEMOLOGY" as (
     from cte
     where row_num = 1
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
