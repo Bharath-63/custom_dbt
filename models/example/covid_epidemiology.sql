@@ -74,3 +74,4 @@ create view "BHARATH_DB"."NEW_SCHEMA"."COVID_EPIDEMOLOGY_STATS_" as (
 
 
 
+gi
